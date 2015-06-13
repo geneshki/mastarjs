@@ -13,9 +13,9 @@ chosen for the name of this library.
 
 To be designed
 
-# Licencing
+# Licensing
 
-This Library is licenced under the MIT Licence
+This Library is licensed under the MIT License
 
 # Trivia
 
