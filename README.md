@@ -13,9 +13,9 @@ chosen for the name of this library.
 
 To be designed
 
-# Licensing
+# HERE BE DRAGONS! 
 
-This Library is licensed under the MIT License
+Warning, the library is still not unit tested! Use on your own risk!
 
 # Trivia
 
@@ -24,3 +24,8 @@ templating library for javascript that would help me generate some html client
 side. However as many other things I didn't like the philosophy of the 
 currently popular templating libraries and engines. That happens quite often
 when I try to use someone else's code. Therefore I decided I'll do it myself!
+
+# Licensing
+
+This Library is licensed under the MIT License
+
