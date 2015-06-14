@@ -12,6 +12,39 @@ chosen for the name of this library.
 # Usage
 
 To be designed
+ ## input:
+ ```
+ var templates = {
+   element: "table",
+   attributes: {
+    "class": "cssClass",
+    "id": "tableId"
+   },
+   events: {
+    "eventOne": function (event) {},
+    "eventTwo": function (event) {}
+   }
+   contents: [{
+    element: "tr",
+    attrubutes: null,
+    contents: [{
+      element: "td",
+      contents: 'a'
+    }]
+   }]
+ };
+ jQuery("#selector").mastar(templates);
+ ```
+ ## output in the DOM:
+ ```
+ <div id="selector">
+   <table class="cssClass" id="tableId">
+     <tr>
+       <td>a</td>
+     </tr>
+   </table>
+ </div>
+ ```
 
 # HERE BE DRAGONS! 
 
