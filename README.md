@@ -1,3 +1,4 @@
+#TEST
 # mastar.js
 A javascript templating library
 
