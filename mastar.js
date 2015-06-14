@@ -6,6 +6,10 @@
  *    "class": "cssClass",
  *    "id": "tableId"
  *   },
+ *   events: {
+ *    "eventOne": function (event) {},
+ *    "eventTwo": function (event) {}
+ *   }
  *   contents: [{
  *    element: "tr",
  *    attrubutes: null,
@@ -38,51 +42,53 @@
      }
      return s;
     },
-    getAttributes = function (attributes) {
-      var result = "";
+    appendAttributes = function (element, attributes) {
       if (attributes === undefined ||
           attributes === null ||
-            typeof attributes !== 'object') {
-        return result;
+            typeOf(attributes) !== 'object') {
+        return element;
       }
       Object.keys(attributes).forEach(function (attribute) {
-        result += " " + attribute;
-        result += "=";
-        result += '"';
-        result += attributes[attribute];
-        result += '"';
+        element.attr(attribute, attributes[attribute]);
       });
-      return result;
+      return element;
+    },
+    appendEvents = function (element, events) {
+      if (events === undefined ||
+          events === null ||
+            typeOf(events) !== 'object') {
+        return element;
+      }
+      element.on(events);
+      return element;
     },
     prepareHtml = function (templates, options) {
-      var result = "";
+      var elements = [];
       templates.forEach(function(template) {
-        var contentsType;
-        result += "<" + template.element;
-        result += getAttributes(template.attributes) + ">";
+        var element = jQuery("<" + template.element + ">");
+        appendAttributes(element, template.attributes);
+        appendEvents(element, template.events);
         if (template.contents !== null &&
-            template.contents !== undefined) {
-          contentsType = typeof template.contents;
-          if (contentsType === 'object') {
-            if (typeOf(contentsType) !== 'array') {
-              console.log("ERROR! The contents of an element should be either array or a single value");
-            } else {
-              result += "\n";
-              result += prepareHtml(template.contents, options);
-              result += "\n";
-            }
+          template.contents !== undefined) {
+          if (typeOf(template.contents) === 'array') {
+            element.append(prepareHtml(template.contents, options));
+          } else if (typeof template.contents !== "object") {
+            element.text(template.contents);
           } else {
-            result += template.contents;
+            console.log("ERROR! The contents of an element should be either array or a single value");
           }
         }
-        result += "</" + template.element + ">" + "\n";
+        elements.push(element[0]);
       });
-      return result;
+      return elements;
     };
   jQuery.fn.mastar = function(templates, options) {
-    var preparedHtml = prepareHtml(templates, options);
-    return this.each(function() {
-      jQuery(this).append(preparedHtml);
+    var preparedObjects = prepareHtml(templates, options);
+    return jQuery(this.selector).each(function() {
+      var that = this;
+      preparedObjects.forEach(function (preparedObject) {
+        jQuery(that).append(preparedObject);
+      });
     });
   };
 } (jQuery));
