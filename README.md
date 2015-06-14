@@ -11,7 +11,7 @@ chosen for the name of this library.
 
 # Usage
 
- ## input
+## Input
 
  ```
  var templates = {
@@ -36,7 +36,7 @@ chosen for the name of this library.
  jQuery("#selector").mastar(templates);
  ```
 
- ## output in the DOM
+## Output in the DOM
 
  ```
  <div id="selector">
