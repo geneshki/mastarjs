@@ -11,8 +11,8 @@ chosen for the name of this library.
 
 # Usage
 
-To be designed
- ## input:
+ ## input
+
  ```
  var templates = {
    element: "table",
@@ -35,7 +35,9 @@ To be designed
  };
  jQuery("#selector").mastar(templates);
  ```
- ## output in the DOM:
+
+ ## output in the DOM
+
  ```
  <div id="selector">
    <table class="cssClass" id="tableId">
