@@ -14,7 +14,7 @@ chosen for the name of this library.
 ## Input
 
  ```
- var templates = {
+ var templates = [{
    element: "table",
    attributes: {
     "class": "cssClass",
@@ -32,7 +32,11 @@ chosen for the name of this library.
       contents: 'a'
     }]
    }]
- };
+ },
+ {
+  element: "div",
+  contents: "Hello, World!"
+ }];
  jQuery("#selector").mastar(templates);
  ```
 
@@ -45,6 +49,7 @@ chosen for the name of this library.
        <td>a</td>
      </tr>
    </table>
+   <div>Hello, World!</div>
  </div>
  ```
 

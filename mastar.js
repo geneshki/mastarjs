@@ -1,6 +1,6 @@
 /**
  * //input:
- * var templates = {
+ * var templates = [{
  *   element: "table",
  *   attributes: {
  *    "class": "cssClass",
@@ -18,13 +18,20 @@
  *      contents: 'a'
  *    }]
  *   }]
- * }
+ * }, {
+ *  element: "div",
+ *  contents: "Hello, World!"
+ * }];
+ * jQuery("#selector").mastar(templates);
  * //output:
- * <table class="cssClass" id="tableId">
- * <tr>
- * <td>a</td>
- * </tr>
- * </table>
+ * <div id="selector">
+     <table class="cssClass" id="tableId">
+       <tr>
+         <td>a</td>
+       </tr>
+     </table>
+     <div>Hello, World!</div>
+ * </div>
  *
  */
 (function (jQuery) { 
